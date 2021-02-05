@@ -1,7 +1,29 @@
 .form {
   display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-gap: 5px;
 }
 
 .inputfield {
   background-color: lightgrey;
+  border-radius: 25px;
+  border: none;
+  box-shadow: 5px 5px 10px black;
+  grid-column: 1 / 6;
+  text-align: right;
+  font-size: 16pt;
+  padding: 15px;
+  margin-bottom: 50px;
+}
+
+.btn {
+  color: white;
+}
+
+.btn_ce {
+  color: white;
+  background-color: red;
+  border-radius: 25px;
+  border: none;
 }
