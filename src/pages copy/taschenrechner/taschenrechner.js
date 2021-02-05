@@ -1,5 +1,8 @@
 import { createElement } from "../../utils/createElement";
 
+let resultNumber = null;
+let operator = null;
+
 function createInputfield() {
   return createElement("input", {
     className: "inputfield",
@@ -10,18 +13,27 @@ function createInputfield() {
   });
 }
 
-function createOldnumberfield() {
-  return createElement("input", {
-    className: "inputfield",
-    id: "oldnumb",
-  });
-}
+let oldnumber = null;
+let newnumber = null;
 
-function createNewnumberfield() {
-  return createElement("input", {
-    className: "inputfield",
-    id: "newnumb",
-  });
+// function createNewnumberfield() {
+//   return createElement("input", {
+//     className: "inputfield",
+//     id: "newnumb",
+//   });
+// }
+
+// const plus = document.createElement("button");
+// plus.innerText = "+";
+// plus.className = "btn";
+// plus.onclick((operator = "plus"));
+
+function calculate(operator) {
+  switch (operator) {
+    case "plus":
+      resultNumber = oldnumber + newnumber;
+      break;
+  }
 }
 
 function createPlus() {
@@ -29,7 +41,12 @@ function createPlus() {
     className: "btn",
     innerText: "+",
     id: "plus",
-    onclick: "getInputValue(); ",
+    onclick: function (event) {
+      event.preventDefault();
+      operator = "plus";
+      oldnumber = inputField.value;
+      inputField = null;
+    },
   });
 }
 
@@ -60,7 +77,7 @@ function createEquals() {
     innerText: "=",
     onclick: function (event) {
       event.preventDefault();
-      inputField.value += 1;
+      calculate(operator);
     },
   });
 }
@@ -87,9 +104,37 @@ function createTwo() {
   });
 }
 
+function createThree() {
+  return createElement("button", {
+    className: "btn",
+    innerText: "3",
+    onclick: function (event) {
+      event.preventDefault();
+      inputField.value += 3;
+    },
+  });
+}
+
+console.log(inputField);
+
+function createFour() {
+  return createElement("button", {
+    className: "btn",
+    innerText: "4",
+    onclick: function (event) {
+      event.preventDefault();
+      inputField.value += 4;
+    },
+  });
+}
+
 let inputField = createInputfield();
-let oldnumberField = createOldnumberfield();
-let newnumberField = createNewnumberfield();
+
+oldnumber = inputField.value;
+
+console.log(inputField);
+
+// let newnumberField = createNewnumberfield();
 
 export function taschenRechner() {
   const plus = createPlus();
@@ -98,25 +143,35 @@ export function taschenRechner() {
   const multiply = createMultiply();
   const one = createOne();
   const two = createTwo();
+  const three = createThree();
+  const four = createFour();
   const equals = createEquals();
-  function getInputValue() {
-    let inputval = document.getElementById("oldnumb").value;
-    alert(inputval);
-  }
 
   return createElement("form", {
     className: "form",
     children: [
       inputField,
-      oldnumberField,
-      newnumberField,
+      oldnumber,
+      newnumber,
       one,
       two,
+      three,
+      four,
       plus,
       minus,
       divide,
       multiply,
       equals,
+      resultNumber,
     ],
+
+    onsubmit: function (event) {
+      event.preventDefault();
+      if (inputField.value != 0) {
+        oldnumber = inputField.value;
+        console.log(oldnumber);
+      }
+      // alert("Stop");
+    },
   });
 }
