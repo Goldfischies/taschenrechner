@@ -1,5 +1,4 @@
 import "./taschenrechner.css";
-import { taschenRechner } from "./taschenrechner";
 import { taschenRechner2 } from "./taschenrechner2";
 
 export default {
@@ -7,5 +6,4 @@ export default {
   parameters: { layout: "centered" },
 };
 
-export const calc = () => taschenRechner();
 export const calc2 = () => taschenRechner2();
