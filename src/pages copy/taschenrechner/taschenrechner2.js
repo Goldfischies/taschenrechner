@@ -38,7 +38,7 @@ inputField1.className = "inputfield";
 inputField1.placeholder = "0";
 
 const ce = createElement("button", {
-  className: "btn_ce",
+  className: "btn btn_ce",
   innerText: "C",
   onclick: function (event) {
     event.preventDefault();
