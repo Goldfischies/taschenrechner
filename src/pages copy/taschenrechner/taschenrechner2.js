@@ -118,9 +118,9 @@ export function taschenRechner2() {
       createNumberButton(2),
       createNumberButton(3),
       multiply,
+      ce,
       createNumberButton(0),
       result,
-      ce,
       divide,
     ],
   });
