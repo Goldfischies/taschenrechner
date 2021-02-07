@@ -9,16 +9,6 @@ const inputField1 = document.createElement("input");
 inputField1.className = "inputfield";
 inputField1.placeholder = "0";
 
-const plus = createElement("button", {
-  className: "btn",
-  innerText: "+",
-  onclick: function (event) {
-    event.preventDefault();
-    operator = "plus";
-    alert(operator);
-  },
-});
-
 const ce = createElement("button", {
   className: "btn_ce",
   innerText: "CE",
@@ -53,7 +43,6 @@ const two = createElement("button", {
   onclick: function (event) {
     event.preventDefault();
     inputField1.value += 2;
-    alert(operator);
   },
 });
 
@@ -125,8 +114,17 @@ const nine = createElement("button", {
   },
 });
 
+const plus = createElement("button", {
+  className: "btn btn_op",
+  innerText: "+",
+  onclick: function (event) {
+    event.preventDefault();
+    operator = "plus";
+  },
+});
+
 const minus = createElement("button", {
-  className: "btn",
+  className: "btn btn_op",
   innerText: "-",
   onclick: function (event) {
     event.preventDefault();
@@ -136,7 +134,7 @@ const minus = createElement("button", {
 });
 
 const divide = createElement("button", {
-  className: "btn",
+  className: "btn btn_op",
   innerText: ":",
   onclick: function (event) {
     event.preventDefault();
@@ -146,7 +144,7 @@ const divide = createElement("button", {
 });
 
 const multiply = createElement("button", {
-  className: "btn",
+  className: "btn btn_op",
   innerText: "*",
   onclick: function (event) {
     event.preventDefault();

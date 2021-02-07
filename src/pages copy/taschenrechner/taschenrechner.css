@@ -19,6 +19,8 @@
 
 .btn {
   color: white;
+  box-shadow: 2px 2px 5px black;
+  margin: 2px;
 }
 
 .btn_ce {
@@ -26,4 +28,8 @@
   background-color: red;
   border-radius: 25px;
   border: none;
+}
+
+.btn_op {
+  background-color: #f56e00;
 }
