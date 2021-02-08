@@ -26,8 +26,7 @@ function createNumberButton(number) {
   return createElement("button", {
     className: "btn",
     innerText: number,
-    onclick: function (event) {
-      event.preventDefault();
+    onclick: function () {
       inputField1.value += number;
     },
   });
@@ -37,21 +36,28 @@ const inputField1 = document.createElement("input");
 inputField1.className = "inputfield";
 inputField1.placeholder = "0";
 
+const clear = createElement("button", {
+  className: "btn btn_clear",
+  innerText: "C",
+  onclick: function () {
+    inputField1.value = null;
+  },
+});
+
 const ce = createElement("button", {
   className: "btn btn_ce",
-  innerText: "C",
-  onclick: function (event) {
-    event.preventDefault();
-    inputField1.value = null;
+  innerText: "CE",
+  onclick: function () {
+    console.log(typeof inputField1.value);
+    inputField1.value = inputField1.value.slice(0, -1);
   },
 });
 
 const result = createElement("button", {
   className: "btn",
   innerText: "=",
-  onclick: function (event) {
-    event.preventDefault();
-    lastNumber = parseInt(inputField1.value);
+  onclick: function () {
+    lastNumber = parseFloat(inputField1.value);
     calculate();
     inputField1.value = resultNumber;
   },
@@ -60,10 +66,9 @@ const result = createElement("button", {
 const plus = createElement("button", {
   className: "btn btn_op",
   innerText: "+",
-  onclick: function (event) {
-    event.preventDefault();
+  onclick: function () {
     operator = "plus";
-    firstNumber = parseInt(inputField1.value);
+    firstNumber = parseFloat(inputField1.value);
     inputField1.value = null;
   },
 });
@@ -71,10 +76,9 @@ const plus = createElement("button", {
 const minus = createElement("button", {
   className: "btn btn_op",
   innerText: "-",
-  onclick: function (event) {
-    event.preventDefault();
+  onclick: function () {
     operator = "minus";
-    firstNumber = parseInt(inputField1.value);
+    firstNumber = parseFloat(inputField1.value);
     inputField1.value = null;
   },
 });
@@ -82,10 +86,9 @@ const minus = createElement("button", {
 const divide = createElement("button", {
   className: "btn btn_op",
   innerText: ":",
-  onclick: function (event) {
-    event.preventDefault();
+  onclick: function () {
     operator = "divi";
-    firstNumber = parseInt(inputField1.value);
+    firstNumber = Number(inputField1.value);
     inputField1.value = null;
   },
 });
@@ -93,19 +96,20 @@ const divide = createElement("button", {
 const multiply = createElement("button", {
   className: "btn btn_op",
   innerText: "*",
-  onclick: function (event) {
-    event.preventDefault();
+  onclick: function () {
     operator = "mult";
-    firstNumber = parseInt(inputField1.value);
+    firstNumber = Number(inputField1.value);
     inputField1.value = null;
   },
 });
 
-export function taschenRechner2() {
-  return createElement("form", {
+export function taschenRechner() {
+  return createElement("div", {
     className: "form",
     children: [
       inputField1,
+      clear,
+      ce,
       createNumberButton(7),
       createNumberButton(8),
       createNumberButton(9),
@@ -118,8 +122,8 @@ export function taschenRechner2() {
       createNumberButton(2),
       createNumberButton(3),
       multiply,
-      ce,
       createNumberButton(0),
+      createNumberButton("."),
       result,
       divide,
     ],
